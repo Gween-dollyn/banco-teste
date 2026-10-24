@@ -17,4 +17,13 @@ const registerLimiter = rateLimit({
     message: { error: 'Muitos cadastros a partir deste IP. Tente novamente mais tarde'},
 });
 
-module.exports = { loginLimiter, registerLimiter };
+const passwordLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 5,
+    skipSuccessfulRequests: true,
+    standardHeaders: 'draft-7',
+    legacyHeaders: false,
+    message: { error: 'Muitas tentativas de troca de senha. Tente novamente em 15 minutos.'},
+});
+
+module.exports = { loginLimiter, registerLimiter, passwordLimiter };

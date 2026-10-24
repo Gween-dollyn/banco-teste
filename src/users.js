@@ -24,4 +24,18 @@ async function findUserById(id) {
         where: {id},
     });
 }
-module.exports = { createUser, findUserByEmail, findUserById };
+
+async function updateUser(id, data) {
+    try {
+        return await prisma.user.update({
+            where: { id },
+            data,
+        });
+    } catch (err) {
+        if (err.code === 'P2002') {
+            throw new Error('EMAIL_ALREADY_EXISTS');
+        }
+        throw err;
+    }
+}
+module.exports = { createUser, findUserByEmail, findUserById, updateUser };

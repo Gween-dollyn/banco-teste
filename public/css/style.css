@@ -133,3 +133,18 @@ button.secondary:hover,
     margin: 4px 0 0;
     font-size: 1.125rem;
 }
+
+h2 {
+    margin: 0;
+    font-size: 1.125rem;
+}
+
+.divider {
+    margin: 32px 0 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+#password-form {
+    margin-top: 32px;
+}
