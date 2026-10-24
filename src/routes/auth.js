@@ -3,12 +3,13 @@ const bcrypt= require('bcrypt');
 const jwt = require('jsonwebtoken')
 const { createUser, findUserByEmail, findUserById } = require('../users');
 const requireAuth = require('../middleware/auth');
+const { loginLimiter, registerLimiter} = require('../middleware/rateLimit')
 
 const router = express.Router();
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-router.post('/register', async (req, res) => {
+router.post('/register', registerLimiter, async (req, res) => {
     const { name, email, password } = req.body;
 
     //validação
@@ -46,7 +47,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', loginLimiter, async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
