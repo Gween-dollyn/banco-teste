@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <main class="card">
+        <h1>Criar conta</h1>
+
+        <form id="register-form">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" minlength="8" required>
+
+            <label for="confirm">Confirmar senha</label>
+            <input type="password" id="confirm" name="confirm" required>
+
+            <button type="submit">Criar conta</button>
+            <p id="message" class="message" role="alert"></p>
+        </form>
+
+        <p class="footer">Já tem conta? <a href="/login.html">Entrar</a></p>
+    </main>
+
+    <script src="/js/register.js"></script>
+</body>
+</html>
