@@ -13,7 +13,9 @@ function requireAuth(req, res, next) {
         req.userId = Number(payload.sub);
         next();
     } catch (err) {
-        console.error('Erro JWT:', err.message);
+        if (process.env.NODE_ENV !== 'test') {
+            console.error('Erro JWT:', err.message);
+        }
         return res.status(401).json({ error: 'Token inválido ou expirado.' });
     }
 }
